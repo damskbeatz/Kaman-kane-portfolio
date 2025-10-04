@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // --- SÉLECTION DES ÉLÉMENTS DU DOM ---
+    // --- SÉLECTIONS DOM ---
     const body = document.body;
     const navbar = document.querySelector('.navbar');
     const hamburger = document.querySelector('.hamburger');
@@ -7,22 +7,26 @@ document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-link');
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
     const sections = document.querySelectorAll('section[id]');
-    
-    // --- PRÉCHARGEUR (PRELOADER) ---
-    body.classList.add('loading');
-    window.addEventListener('load', () => {
-        const preloader = document.querySelector('.preloader');
-        preloader.classList.add('fade-out');
-        body.classList.remove('loading');
-        
-        // S'assure que les animations visibles au chargement se déclenchent
+
+    // --- GESTION DU PRÉCHARGEUR (PRELOADER) ---
+    const preloader = document.querySelector('.preloader');
+    if (preloader) {
+        window.addEventListener('load', () => {
+            preloader.classList.add('fade-out');
+            body.classList.remove('loading');
+        });
+    }
+
+    // --- ANIMATIONS VISIBLES AU CHARGEMENT ---
+    function triggerInitialAnimations() {
         animatedElements.forEach(el => {
             const rect = el.getBoundingClientRect();
             if (rect.top < window.innerHeight && rect.bottom >= 0) {
                 el.classList.add('is-visible');
             }
         });
-    });
+    }
+    triggerInitialAnimations();
 
     // --- ANIMATION DE TEXTE (TYPED.JS) ---
     if (document.getElementById('typed-text')) {
@@ -35,13 +39,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    
+
     // --- NAVBAR INTELLIGENTE ---
     let lastScrollY = window.scrollY;
-    
     window.addEventListener('scroll', () => {
         const currentScrollY = window.scrollY;
 
-        // Fait apparaître/disparaître la navbar au scroll
         if (currentScrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
@@ -56,11 +60,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // --- MENU HAMBURGER (MOBILE) ---
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navMenuContainer.classList.toggle('active');
-        document.body.classList.toggle('no-scroll');
-    });
+    if (hamburger && navMenuContainer) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenuContainer.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
+        });
+    }
 
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
@@ -93,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target); // Optionnel: ne l'anime qu'une fois
+                observer.unobserve(entry.target);
             }
         });
     }, { threshold: 0.1 });
@@ -107,13 +113,43 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (entry.isIntersecting) {
                     const skillBars = entry.target.querySelectorAll('.skill-bar');
                     skillBars.forEach(bar => {
-                        const level = bar.getAttribute('data-level');
-                        bar.style.width = level;
+                        setTimeout(() => {
+                            const level = bar.getAttribute('data-level');
+                            bar.style.width = level;
+                        }, 200);
                     });
-                    observer.unobserve(entry.target); // L'animation ne se joue qu'une fois
+                    observer.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.3 });
         skillsObserver.observe(skillsSection);
+    }
+
+    // --- LOGIQUE D'ANIMATION POUR LA TIMELINE V3 ---
+    const timelinePath = document.querySelector('#timeline-path');
+    const timelineSection = document.querySelector('.timeline-v3');
+
+    if (timelinePath && timelineSection) {
+        const pathLength = timelinePath.getTotalLength();
+
+        timelinePath.style.strokeDasharray = pathLength;
+        timelinePath.style.strokeDashoffset = pathLength;
+
+        const animateTimeline = () => {
+            const rect = timelineSection.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            const startPoint = rect.top - windowHeight * 0.8;
+            const endPoint = rect.bottom - windowHeight * 0.2;
+            const scrollableHeight = endPoint - startPoint;
+            
+            let progress = -startPoint / scrollableHeight;
+            progress = Math.max(0, Math.min(1, progress));
+
+            const drawLength = pathLength * progress;
+            timelinePath.style.strokeDashoffset = pathLength - drawLength;
+        };
+
+        window.addEventListener('scroll', animateTimeline);
+        animateTimeline();
     }
 });
