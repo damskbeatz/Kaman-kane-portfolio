@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kaman KANE | Développeur Créatif</title>
     <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Permanent+Marker&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="loading">
     <div class="preloader">
         <div class="spinner"></div>
     </div>
 
-    <nav class="navbar">
+   <nav class="navbar">
     <div class="container">
         <a href="#" class="nav-logo">K.KANE</a>
         <div class="nav-menu-container">
@@ -50,7 +50,7 @@
         <section id="about" class="container section">
             <div class="about-content">
                 <div class="about-photo-container animate-on-scroll">
-                    <img src="https://i.imgur.com/UQSwY3z.png" alt="Photo de Kaman Kane" class="about-photo">
+                    <img src="kaman.png" alt="Photo de Kaman Kane" class="about-photo">
                 </div>
                 <div class="about-text animate-on-scroll">
                     <h2 class="section-title">Je transforme les idées en code.</h2>
@@ -64,7 +64,7 @@
         
         <section id="skills" class="section">
             <div class="container">
-                <h2 class="section-title animate-on-scroll">Mes Crayons & Outils</h2>
+                <h2 id="skills-title" class="section-title animate-on-scroll">Mes Crayons & Outils</h2>
                 <div class="skills-grid">
                     <div class="skills-category animate-on-scroll">
                         <h3><i class="fas fa-pencil-alt"></i> Frontend</h3>
@@ -117,63 +117,112 @@
             </div>
         </section>
 
-       <section id="journey" class="container section">
-            <h2 class="section-title animate-on-scroll">Mon Parcours</h2>
-            <div class="timeline">
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Master en Informatique (en cours)</h3>
-                        <p>GEMINI MANAGEMENT INTERNATIONAL | 2025 - Présent</p>
+       <section id="journey" class="section">
+           <div class="container">
+                <h2 class="section-title animate-on-scroll">Mon Parcours</h2>
+                <div class="timeline-v3">
+                    <div class="timeline-v3-svg-wrapper">
+                        <svg width="3" height="100%" viewBox="0 0 3 1350" preserveAspectRatio="none">
+                            <path d="M 1.5 0 V 1350" stroke-width="3" id="timeline-path"></path>
+                        </svg>
                     </div>
-                </div>
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Licence en Informatique</h3>
-                        <p>GEMINI MANAGEMENT INTERNATIONAL | 2022 - 2025</p>
-                    </div>
-                </div>
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Stage - Agence Sabu Nyuman</h3>
-                        <p>Maintenance, support technique | 3 mois</p>
-                    </div>
-                </div>
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Baccalauréat Scientifique</h3>
-                        <p>Lycée LMBK | 2022</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
+                    <div class="timeline-v3-item animate-on-scroll">
+                        <div class="timeline-v3-dot"></div>
+                        <div class="timeline-v3-content">
+                             <h3>Master en Informatique <span class="timeline-status">(en cours)</span></h3>
+                            <p class="timeline-date"><i class="fas fa-calendar-alt"></i> 2025 - Présent</p>
+                            <p class="timeline-location"><i class="fas fa-map-marker-alt"></i> GEMINI MANAGEMENT INTERNATIONAL</p>
+                        </div>
+                    </div>
+                    <div class="timeline-v3-item animate-on-scroll">
+                        <div class="timeline-v3-dot"></div>
+                        <div class="timeline-v3-content">
+                            <h3>Licence en Informatique</h3>
+                            <p class="timeline-date"><i class="fas fa-calendar-alt"></i> 2022 - 2025</p>
+                            <p class="timeline-location"><i class="fas fa-map-marker-alt"></i> GEMINI MANAGEMENT INTERNATIONAL</p>
+                        </div>
+                    </div>
+                     <div class="timeline-v3-item animate-on-scroll">
+                        <div class="timeline-v3-dot"></div>
+                        <div class="timeline-v3-content">
+                           <h3>Stage - Agence Sabu Nyuman</h3>
+                            <p class="timeline-date"><i class="fas fa-clock"></i> 3 mois</p>
+                            <p class="timeline-location"><i class="fas fa-briefcase"></i> Maintenance & support technique</p>
+                        </div>
+                    </div>
+                    <div class="timeline-v3-item animate-on-scroll">
+                        <div class="timeline-v3-dot"></div>
+                        <div class="timeline-v3-content">
+                           <h3>Baccalauréat Scientifique</h3>
+                             <p class="timeline-date"><i class="fas fa-calendar-alt"></i> 2022</p>
+                            <p class="timeline-location"><i class="fas fa-map-marker-alt"></i> Lycée LMBK</p>
+                        </div>
+                    </div>
+                </div>
+           </div>
+       </section>
 
-        <section id="projects" class="container section">
+       <section id="projects" class="container section">
             <h2 class="section-title animate-on-scroll">Mes Esquisses</h2>
+
             <div class="projects-grid">
                 <div class="project-card animate-on-scroll">
-                    <div class="project-content">
-                        <h3>Sites Vitrines pour Client</h3>
-                        <p>Développement de A à Z de deux sites web sur mesure, avec un focus sur la performance et le design responsive.</p>
-                        <span class="project-tech">HTML, CSS, JS</span>
+                    <div class="project-card-image">
+                        <img src="management.jpg" alt="Aperçu du projet Carica">
+                        <div class="project-card-overlay"></div>
+                    </div>
+                    <div class="project-card-info">
+                        <h3>Carica Management System</h3>
+                        <p>Solution digitale pour piloter vos activités commerciales en toute sérénité.</p>
+                        <div class="project-footer">
+                           <div>
+                                <span class="project-tech">PHP</span>
+                                <span class="project-tech">JavaScript</span>
+                           </div>
+                            <a href="https://www.cimitechmali.com/index2.html" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                                Voir le projet <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
+                
                 <div class="project-card animate-on-scroll">
-                    <div class="project-content">
+                    <div class="project-card-image">
+                        <img src="portofolio.jpg" alt="Aperçu du projet CIMITECH">
+                        <div class="project-card-overlay"></div>
+                    </div>
+                    <div class="project-card-info">
+                         <h3>CIMITECH MALI</h3>
+                         <p>Transformation d'idées en solutions numériques performantes et sur mesure.</p>
+                        <div class="project-footer">
+                           <div>
+                                <span class="project-tech">HTML</span>
+                                <span class="project-tech">CSS</span>
+                                <span class="project-tech">JS</span>
+                           </div>
+                            <a href="https://www.cimitechmali.com/index.html" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                                Voir le projet <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card animate-on-scroll">
+                    <span class="project-badge">Site Actuel</span>
+                    <div class="project-card-image">
+                        <img src="portofolio.jpg" alt="Aperçu de ce portfolio">
+                        <div class="project-card-overlay"></div>
+                    </div>
+                    <div class="project-card-info">
                         <h3>Portfolio Interactif</h3>
-                        <p>Le site que vous consultez, construit avec des techniques JS & CSS pour une expérience "carnet de croquis".</p>
-                        <span class="project-tech">JavaScript, CSS</span>
-                    </div>
-                </div>
-                <div class="project-card animate-on-scroll">
-                    <div class="project-content">
-                        <h3>Lab Projets Personnels</h3>
-                        <p>Exploration continue de nouvelles technos via des mini-projets et prototypes (APIs, frameworks, etc.).</p>
-                        <span class="project-tech">React, Node, Flutter</span>
+                        <p>Le site que vous consultez, conçu avec une esthétique "carnet de croquis".</p>
+                        <div class="project-footer">
+                            <div>
+                                <span class="project-tech">JavaScript</span>
+                                <span class="project-tech">CSS</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -197,10 +246,10 @@
             <a href="#">GitHub</a>
             <a href="#">LinkedIn</a>
         </div>
-        <p>&copy; 2025 Kaman KANE - Portfolio V2.0</p>
+        <p>&copy; 2025 Kaman KANE - Portfolio V2.1</p>
     </footer>
 
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <script src="script.js"></script>
 </body>
-  </html>
+</html>
